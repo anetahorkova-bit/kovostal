@@ -59,6 +59,19 @@
     .track{flex:none}
     .track img{height:auto;width:calc(100vw - var(--peek) - 10px)}
   }
+
+  /* Sekce Smysl je v detailu */
+  .materials{padding:clamp(40px,4vw,80px) clamp(20px,3vw,58px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:4vw;align-items:stretch}
+  .materials h2{margin:0 0 12px;font-size:clamp(23px,1.5vw,36px)}
+  .materials p{margin:0 0 24px;max-width:49ch;font-size:clamp(16px,1.04vw,22px);line-height:1.55;letter-spacing:.045em}
+  .material-left{display:flex;flex-direction:column;justify-content:space-between}
+  .materials img{display:block;width:100%;object-fit:cover;border-radius:14px}
+  .material-left img{width:80%;aspect-ratio:1.39}
+  .video{position:relative;align-self:end}.video img{aspect-ratio:16/9}
+  .play{position:absolute;inset:0;margin:auto;width:clamp(64px,6vw,96px);height:clamp(64px,6vw,96px);border-radius:50%;background:rgba(40,40,40,.85);display:grid;place-items:center;pointer-events:none;transition:background .25s}
+  .video:hover .play{background:rgba(20,20,20,.95)}
+  .play svg{width:32%;margin-left:8%}
+  @media (max-width:860px){.materials{grid-template-columns:1fr}.material-left img{width:72%}}
 </style>
 </head>
 <body>
@@ -88,6 +101,15 @@
     <img src="https://www.kovostal.cz/r/104/169718/obsah/produkty/Aeronaute/DSCF3946.jpg" alt="">
   </div></div>
   <div class="side-img"><img src="https://www.kovostal.cz/r/104/169718/obsah/produkty/Aeronaute/DSCF3946.jpg" alt=""></div>
+</section>
+
+<section class="materials">
+  <div class="material-left">
+    <div><h2>Smysl je v detailu</h2>
+    <p>Produkty směrované do veřejného prostoru musí obstát před tisíci fanoušků i před proměnlivým počasím, kterému jsou neustále vystavovány. Právě proto používáme kvalitní a ověřené materiály, které odpovídají přísným evropským standardům.</p></div>
+    <img src="https://www.kovostal.cz/r/104/169718/obsah/produkty/Aeronaute/DSCF3946.jpg" alt="Detail modulárního sezení Aeronaute">
+  </div>
+  <div class="video"><img src="https://www.kovostal.cz/r/104/169994/obsah/produkty/Aeronaute/DSCF3917.jpg" alt="Modulární sezení Aeronaute – video"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z" fill="#fff"/></svg></span></div>
 </section>
 
 <script>
