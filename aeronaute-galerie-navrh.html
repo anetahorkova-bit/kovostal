@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aeronaute – návrh galerie</title>
+<style>
+  :root{ --bg:#e2e2e2; --accent:#e5603b; --header:78px; --h: calc(100svh - var(--header)); }
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:#000;font-family:"NOW","Helvetica Neue",Arial,sans-serif}
+  header{position:sticky;top:0;z-index:5;height:var(--header);display:flex;align-items:center;justify-content:space-between;
+    padding:0 25px;background:var(--bg);border-bottom:1px solid #000}
+  header nav{display:flex;gap:56px;font-size:15px}
+  header nav a{color:inherit;text-decoration:none}
+  header nav a.on{color:var(--accent)}
+  .logo{font-weight:700;font-size:28px;display:flex;align-items:center;gap:0}
+  .logo i{display:inline-block;width:22px;height:22px;border-radius:50%;background:#000}
+  .logo i+i{margin-right:6px}
+
+  /* Blok = jedna obrazovka. Šířka carouselu se odvodí z výšky (4:5), takže fotka je vždy celá. */
+  .about{display:grid;grid-template-rows:minmax(0,1fr);height:var(--h);min-height:520px}
+  .about.rev .carousel{order:-1}
+  .text{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:48px clamp(32px,6vw,120px)}
+  h1{font-family:"DIN Pro","Helvetica Neue",Arial,sans-serif;font-weight:700;font-size:clamp(40px,4.4vw,64px);margin-bottom:28px}
+  .text p{font-size:17px;line-height:1.45;max-width:540px}
+  .text .cat{margin-top:28px;font-size:15px;color:inherit;text-underline-offset:3px}
+  .side-img{display:grid;place-items:center;padding:48px}
+  .side-img img{height:min(calc(var(--h) * .7),620px);aspect-ratio:4/5;object-fit:cover;border-radius:14px}
+
+  /* Carousel = pás fotek. Aktuální fotka celá, vedle ní vykukuje další (ztlumená) → je vidět, že je fotek víc */
+  :root{ --dotsbar:72px; --peek:clamp(90px,9vw,160px); }
+  .about{grid-template-columns:1fr calc((var(--h) - var(--dotsbar)) * .8 + var(--peek))}
+  .about.rev{grid-template-columns:calc((var(--h) - var(--dotsbar)) * .8 + var(--peek)) 1fr}
+  .carousel{position:relative;overflow:hidden;height:100%;display:flex;flex-direction:column}
+  .track{display:flex;gap:10px;flex:1;min-height:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-behavior:smooth}
+  .about.rev .track{direction:rtl}  /* v obráceném bloku vykukuje fotka směrem ke středu stránky */
+  .track::-webkit-scrollbar{display:none}
+  .track img{flex:none;height:100%;aspect-ratio:4/5;width:auto;object-fit:cover;scroll-snap-align:start;opacity:.45;transition:opacity .4s}
+  .track img.on{opacity:1}
+  .track img:last-child{margin-inline-end:var(--peek)}
+  /* tečky přesně jako na webu (22 px, bez mezer, černá / 25 %), ale pod fotkou na šedé – vždy vidět */
+  .dots{height:var(--dotsbar);display:flex;align-items:center;justify-content:center;gap:6px;padding-right:var(--peek)}
+  .about.rev .dots{padding:0 0 0 var(--peek)}
+  .dots button{all:unset;cursor:pointer;width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.25);transition:background .3s}
+  .dots button.on{background:#000}
+  .dots button:hover{background:rgba(0,0,0,.55)}
+  .dots button.on:hover{background:#000}
+  .track img{cursor:pointer}
+  /* jemné „pošťouchnutí“ při prvním zobrazení */
+  @keyframes nudge{0%,100%{transform:none}40%{transform:translateX(-44px)}}
+  .about:not(.rev) .track.hint img{animation:nudge 1.1s cubic-bezier(.45,0,.2,1) .4s}
+  .about.rev .track.hint img{animation:nudge 1.1s cubic-bezier(.45,0,.2,1) .4s reverse}
+  @media (prefers-reduced-motion:reduce){.track.hint img{animation:none!important}}
+
+  @media (max-width:860px){
+    :root{--peek:56px}
+    .about,.about.rev{grid-template-columns:1fr;height:auto}
+    .about .carousel{order:-1;height:auto}
+    .track{flex:none}
+    .track img{height:auto;width:calc(100vw - var(--peek) - 10px)}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><i></i><i></i>kovostal</div>
+  <nav><a class="on" href="#">Produkty</a><a href="#">Projekty</a><a href="#">O nás</a><a href="#">Kontakt</a><a href="#">Kariéra</a></nav>
+  <span>CZ ▾</span>
+</header>
+
+<section class="about">
+  <div class="text">
+    <h1>AERONAUTE</h1>
+    <p>Modulární sedací systém Aeronaute zaujme kompaktním tvarem, který připomíná něco mezi vzducholodí a pohodlnou pohovkou. Kombinace dřevěných ploch a velkoryse čalouněných sedáků podtrhuje jeho útulný charakter. Promyšlený, jednoduchý a funkční design umožňuje snadné modulární rozšiřování, variabilní kombinování sedacích a odkládacích ploch a zároveň usnadňuje každodenní údržbu. Vybrané područky lze navíc doplnit o stolek, elektrické zásuvky a USB porty.</p>
+    <a class="cat" href="#">↓ Katalog 2024/25</a>
+  </div>
+  <div class="carousel"><div class="track">
+    <img src="https://www.kovostal.cz/r/104/169722/obsah/produkty/Aeronaute/DSCF3949.jpg" alt="">
+    <img src="https://www.kovostal.cz/r/104/169716/obsah/produkty/Aeronaute/DSCF3945.jpg" alt="">
+    <img src="https://www.kovostal.cz/r/104/169721/obsah/produkty/Aeronaute/DSCF3950.jpg" alt="">
+  </div></div>
+</section>
+
+<section class="about rev">
+  <div class="carousel"><div class="track">
+    <img src="https://www.kovostal.cz/r/104/169717/obsah/produkty/Aeronaute/DSCF3943.jpg" alt="">
+    <img src="https://www.kovostal.cz/r/104/169719/obsah/produkty/Aeronaute/DSCF3947.jpg" alt="">
+    <img src="https://www.kovostal.cz/r/104/169718/obsah/produkty/Aeronaute/DSCF3946.jpg" alt="">
+  </div></div>
+  <div class="side-img"><img src="https://www.kovostal.cz/r/104/169718/obsah/produkty/Aeronaute/DSCF3946.jpg" alt=""></div>
+</section>
+
+<script>
+document.querySelectorAll('.carousel').forEach(c=>{
+  const t=c.querySelector('.track'), imgs=[...t.children], n=imgs.length;
+  const dots=document.createElement('div'); dots.className='dots';
+  const step=()=>(imgs[0].offsetWidth||1)+10;
+  const to=i=>t.scrollTo({left:(getComputedStyle(t).direction==='rtl'?-1:1)*i*step()});
+  const ds=imgs.map((_,i)=>{const b=document.createElement('button');b.ariaLabel='Fotka '+(i+1);b.onclick=()=>to(i);dots.append(b);return b});
+  c.append(dots);
+  const cur=()=>Math.min(n-1,Math.round(Math.abs(t.scrollLeft)/step()));
+  const upd=()=>{const i=cur();ds.forEach((b,k)=>b.classList.toggle('on',k===i));imgs.forEach((im,k)=>im.classList.toggle('on',k===i))};
+  imgs.forEach((im,i)=>im.onclick=()=>to(im.classList.contains('on')?(i+1)%n:i));
+  t.addEventListener('scroll',()=>requestAnimationFrame(upd)); upd();
+  new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){t.classList.add('hint');o.disconnect()}},{threshold:.6}).observe(c);
+});
+</script>
+</body>
+</html>
