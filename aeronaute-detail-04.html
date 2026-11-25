@@ -120,19 +120,17 @@
     .lb-stage{height:auto;width:92vw}.lb-stage img{width:100%;height:auto}
   }
 
-  /* Varianta 04 – klasika: nadpis a text nahoře, fotky pod tím v jedné řadě */
-  .cl{padding:clamp(16px,2.5vh,28px) clamp(20px,2vw,40px) clamp(40px,6vh,72px)}
-  .crumbs{display:flex;gap:10px;font-size:13px;color:#333}.crumbs a{color:inherit;text-decoration:none}.crumbs span{color:#999}
-  .cl-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:4vw;align-items:start;margin-top:clamp(8px,1.5vh,18px)}
-  .cl-head h1{text-align:left;margin:0;font-size:clamp(44px,5.5vw,84px);line-height:1;text-transform:none}
-  .cl-desc p{margin:6px 0 0;font-size:15px;line-height:1.5;max-width:68ch}
-  .cl-desc .cat{display:inline-block;margin-top:14px;color:inherit;font-size:14px;text-underline-offset:3px}
-  .cl hr{border:0;border-top:1px solid #bdbdbd;margin:clamp(18px,3vh,32px) 0}
-  /* 6 fotek v jedné řadě; výška se hlídá, aby se celý detail vešel na obrazovku */
-  /* Mřížka 4 místa na řádek, v každém řádku jedno volné (jinde) → vzdušné, všechny fotky na výšku */
-  .cl-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,24px)}
-  .cl-grid .tile{aspect-ratio:4/5}
-  @media (max-width:860px){.cl-head{grid-template-columns:1fr}.cl-grid{grid-template-columns:repeat(2,1fr)}.cl-grid .gap{display:none}}
+  /* Varianta 04 – mřížka 4 × 2 od vrchu: 1. pole = text, 2. řádek začíná volným místem; vše na jedné obrazovce */
+  .cl{--row:calc((100svh - var(--header) - 2 * clamp(16px,2.5vh,32px) - clamp(12px,1.6vw,24px)) / 2);
+      padding:clamp(16px,2.5vh,32px) clamp(20px,2vw,40px)}
+  .cl-grid{display:grid;grid-template-columns:repeat(4,calc(var(--row) * .8));grid-auto-rows:var(--row);gap:clamp(12px,1.6vw,24px);justify-content:space-between;max-width:1440px;margin:0 auto}
+  .cl-grid .tile{aspect-ratio:auto;width:100%;height:100%}
+  .cl-text{display:flex;flex-direction:column;min-height:0;overflow:hidden}
+  .crumbs{display:flex;gap:8px;font-size:12px;color:#333}.crumbs a{color:inherit;text-decoration:none}.crumbs span{color:#999}
+  .cl-text h1{text-align:left;margin:clamp(8px,1.5vh,16px) 0 clamp(8px,1.4vh,14px);font-size:clamp(32px,3.2vw,48px);line-height:1;text-transform:none}
+  .cl-text p{margin:0;font-size:clamp(12.5px,.95vw,14.5px);line-height:1.5}
+  .cl-text .cat{margin-top:auto;padding-top:10px;color:inherit;font-size:14px;text-underline-offset:3px}
+  @media (max-width:860px){.cl-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto}.cl-text{grid-column:1/-1;overflow:visible}.cl-grid .tile{aspect-ratio:4/5}.cl-grid .gap{display:none}}
 </style>
 </head>
 <body>
@@ -143,16 +141,11 @@
 </header>
 
 <section class="cl">
-  <nav class="crumbs"><a href="#">Úvod</a><span>·</span><a href="#">Produkty</a><span>·</span><a href="#">Sedací systémy</a></nav>
-  <div class="cl-head">
-    <h1>Aeronaute</h1>
-    <div class="cl-desc">
-      <p>Modulární sedací systém Aeronaute zaujme kompaktním tvarem, který připomíná něco mezi vzducholodí a pohodlnou pohovkou. Kombinace dřevěných ploch a velkoryse čalouněných sedáků podtrhuje jeho útulný charakter. Promyšlený, jednoduchý a funkční design umožňuje snadné modulární rozšiřování, variabilní kombinování sedacích a odkládacích ploch a zároveň usnadňuje každodenní údržbu. Vybrané područky lze navíc doplnit o stolek, elektrické zásuvky a USB porty.</p>
-      <a class="cat" href="https://www.kovostal.cz/r/files/79531/ke-stazeni/katalog_kovostal_2024_02.pdf">↓ Katalog 2024/25</a>
-    </div>
+  <div class="cl-grid">
+    <div class="cl-text"><nav class="crumbs"><a href="#">Úvod</a><span>·</span><a href="#">Produkty</a><span>·</span><a href="#">Sedací systémy</a></nav><h1>Aeronaute</h1><p>Modulární sedací systém Aeronaute zaujme kompaktním tvarem, který připomíná něco mezi vzducholodí a pohodlnou pohovkou. Kombinace dřevěných ploch a velkoryse čalouněných sedáků podtrhuje jeho útulný charakter. Promyšlený, jednoduchý a funkční design umožňuje snadné modulární rozšiřování, variabilní kombinování sedacích a odkládacích ploch a zároveň usnadňuje každodenní údržbu. Vybrané područky lze navíc doplnit o stolek, elektrické zásuvky a USB porty.</p><a class="cat" href="https://www.kovostal.cz/r/files/79531/ke-stazeni/katalog_kovostal_2024_02.pdf">↓ Katalog 2024/25</a></div>
+    <button class="tile" data-i="0" aria-label="Zvětšit fotku 1"><img src="https://www.kovostal.cz/r/104/169722/obsah/produkty/Aeronaute/DSCF3949.jpg" alt="Aeronaute – pohled 1"></button><button class="tile" data-i="1" aria-label="Zvětšit fotku 2"><img src="https://www.kovostal.cz/r/104/169716/obsah/produkty/Aeronaute/DSCF3945.jpg" alt="Aeronaute – pohled 2"></button><button class="tile" data-i="5" aria-label="Zvětšit fotku 6"><img src="https://www.kovostal.cz/r/104/169718/obsah/produkty/Aeronaute/DSCF3946.jpg" alt="Aeronaute – pohled 6"></button>
+    <span class="gap" aria-hidden="true"></span><button class="tile" data-i="2" aria-label="Zvětšit fotku 3"><img src="https://www.kovostal.cz/r/104/169721/obsah/produkty/Aeronaute/DSCF3950.jpg" alt="Aeronaute – pohled 3"></button><button class="tile" data-i="3" aria-label="Zvětšit fotku 4"><img src="https://www.kovostal.cz/r/104/169717/obsah/produkty/Aeronaute/DSCF3943.jpg" alt="Aeronaute – pohled 4"></button><button class="tile" data-i="4" aria-label="Zvětšit fotku 5"><img src="https://www.kovostal.cz/r/104/169719/obsah/produkty/Aeronaute/DSCF3947.jpg" alt="Aeronaute – pohled 5"></button>
   </div>
-  <hr>
-  <div class="cl-grid"><button class="tile" data-i="0" aria-label="Zvětšit fotku 1"><img src="https://www.kovostal.cz/r/104/169722/obsah/produkty/Aeronaute/DSCF3949.jpg" alt="Aeronaute – pohled 1"></button><button class="tile" data-i="1" aria-label="Zvětšit fotku 2"><img src="https://www.kovostal.cz/r/104/169716/obsah/produkty/Aeronaute/DSCF3945.jpg" alt="Aeronaute – pohled 2"></button><span class="gap" aria-hidden="true"></span><button class="tile" data-i="5" aria-label="Zvětšit fotku 6"><img src="https://www.kovostal.cz/r/104/169718/obsah/produkty/Aeronaute/DSCF3946.jpg" alt="Aeronaute – pohled 6"></button><span class="gap" aria-hidden="true"></span><button class="tile" data-i="2" aria-label="Zvětšit fotku 3"><img src="https://www.kovostal.cz/r/104/169721/obsah/produkty/Aeronaute/DSCF3950.jpg" alt="Aeronaute – pohled 3"></button><button class="tile" data-i="3" aria-label="Zvětšit fotku 4"><img src="https://www.kovostal.cz/r/104/169717/obsah/produkty/Aeronaute/DSCF3943.jpg" alt="Aeronaute – pohled 4"></button><button class="tile" data-i="4" aria-label="Zvětšit fotku 5"><img src="https://www.kovostal.cz/r/104/169719/obsah/produkty/Aeronaute/DSCF3947.jpg" alt="Aeronaute – pohled 5"></button></div>
 </section>
 
 <div class="lb" id="lb" hidden>
