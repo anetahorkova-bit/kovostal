@@ -129,15 +129,10 @@
   .cl-desc .cat{display:inline-block;margin-top:14px;color:inherit;font-size:14px;text-underline-offset:3px}
   .cl hr{border:0;border-top:1px solid #bdbdbd;margin:clamp(18px,3vh,32px) 0}
   /* 6 fotek v jedné řadě; výška se hlídá, aby se celý detail vešel na obrazovku */
-  /* Mozaika 3 + 3: stejná výška řádků, jedna fotka na šířku, druhý řádek odsazený → vzdušnější */
-  .cl{--row:clamp(170px,calc((100svh - var(--header) - 410px) / 2),380px)}
-  .cl-grid{display:flex;flex-direction:column;gap:clamp(16px,2.2vw,32px)}
-  .row{display:flex;gap:clamp(12px,1.6vw,24px);height:var(--row)}
-  .row .tile{height:100%;aspect-ratio:4/5;flex:none}
-  .row .tile.wide{aspect-ratio:3/2}
-  .r2{margin-left:auto;margin-right:clamp(0px,6vw,120px)}
-  .r1{margin-left:0}
-  @media (max-width:1000px){.cl-head{grid-template-columns:1fr}.row{height:auto;flex-wrap:wrap}.row .tile{height:auto;width:calc(50% - 8px)}.row .tile.wide{width:100%}.r2{margin:0}}
+  /* Mřížka 4 místa na řádek, v každém řádku jedno volné (jinde) → vzdušné, všechny fotky na výšku */
+  .cl-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,24px)}
+  .cl-grid .tile{aspect-ratio:4/5}
+  @media (max-width:860px){.cl-head{grid-template-columns:1fr}.cl-grid{grid-template-columns:repeat(2,1fr)}.cl-grid .gap{display:none}}
 </style>
 </head>
 <body>
@@ -157,7 +152,7 @@
     </div>
   </div>
   <hr>
-  <div class="cl-grid"><div class="row r1"><button class="tile" data-i="0" aria-label="Zvětšit fotku 1"><img src="https://www.kovostal.cz/r/104/169722/obsah/produkty/Aeronaute/DSCF3949.jpg" alt="Aeronaute – pohled 1"></button><button class="tile" data-i="1" aria-label="Zvětšit fotku 2"><img src="https://www.kovostal.cz/r/104/169716/obsah/produkty/Aeronaute/DSCF3945.jpg" alt="Aeronaute – pohled 2"></button><button class="tile wide" data-i="5" aria-label="Zvětšit fotku 6"><img src="https://www.kovostal.cz/r/104/169718/obsah/produkty/Aeronaute/DSCF3946.jpg" alt="Aeronaute – pohled 6"></button></div><div class="row r2"><button class="tile" data-i="2" aria-label="Zvětšit fotku 3"><img src="https://www.kovostal.cz/r/104/169721/obsah/produkty/Aeronaute/DSCF3950.jpg" alt="Aeronaute – pohled 3"></button><button class="tile" data-i="3" aria-label="Zvětšit fotku 4"><img src="https://www.kovostal.cz/r/104/169717/obsah/produkty/Aeronaute/DSCF3943.jpg" alt="Aeronaute – pohled 4"></button><button class="tile" data-i="4" aria-label="Zvětšit fotku 5"><img src="https://www.kovostal.cz/r/104/169719/obsah/produkty/Aeronaute/DSCF3947.jpg" alt="Aeronaute – pohled 5"></button></div></div>
+  <div class="cl-grid"><button class="tile" data-i="0" aria-label="Zvětšit fotku 1"><img src="https://www.kovostal.cz/r/104/169722/obsah/produkty/Aeronaute/DSCF3949.jpg" alt="Aeronaute – pohled 1"></button><button class="tile" data-i="1" aria-label="Zvětšit fotku 2"><img src="https://www.kovostal.cz/r/104/169716/obsah/produkty/Aeronaute/DSCF3945.jpg" alt="Aeronaute – pohled 2"></button><span class="gap" aria-hidden="true"></span><button class="tile" data-i="5" aria-label="Zvětšit fotku 6"><img src="https://www.kovostal.cz/r/104/169718/obsah/produkty/Aeronaute/DSCF3946.jpg" alt="Aeronaute – pohled 6"></button><span class="gap" aria-hidden="true"></span><button class="tile" data-i="2" aria-label="Zvětšit fotku 3"><img src="https://www.kovostal.cz/r/104/169721/obsah/produkty/Aeronaute/DSCF3950.jpg" alt="Aeronaute – pohled 3"></button><button class="tile" data-i="3" aria-label="Zvětšit fotku 4"><img src="https://www.kovostal.cz/r/104/169717/obsah/produkty/Aeronaute/DSCF3943.jpg" alt="Aeronaute – pohled 4"></button><button class="tile" data-i="4" aria-label="Zvětšit fotku 5"><img src="https://www.kovostal.cz/r/104/169719/obsah/produkty/Aeronaute/DSCF3947.jpg" alt="Aeronaute – pohled 5"></button></div>
 </section>
 
 <div class="lb" id="lb" hidden>
