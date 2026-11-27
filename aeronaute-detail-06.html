@@ -125,9 +125,14 @@
   .g5{--pad:clamp(20px,3vw,58px);--gap:clamp(12px,1.6vw,24px);--thumb:clamp(56px,6vw,92px);
       --mainh:calc(100svh - var(--header) - 2 * var(--gap));
       --mw:min(calc(var(--mainh) * .8), 50vw);
-      display:grid;grid-template-columns:var(--thumb) var(--mw) minmax(0,440px);justify-content:center;align-items:center;
+      display:grid;grid-template-columns:var(--thumb) var(--mw) minmax(0,500px);justify-content:center;align-items:center;
       column-gap:clamp(16px,2vw,32px);padding:var(--gap) var(--pad)}
   .g5 .g5-text{margin-left:clamp(16px,4vw,88px)}
+  /* text převzatý ze současného webu: centrovaný, DIN Pro 68 px verzálky, NOW 20/25 px, max 500 px */
+  .g5 .g5-text{align-items:center;text-align:center}
+  .g5 .g5-text h1{margin:0 0 18px;text-align:center;font-family:"DIN Pro","Helvetica Neue",sans-serif;font-weight:700;font-size:clamp(44px,4.7vw,68px);line-height:1.3;letter-spacing:-.01em;text-transform:uppercase}
+  .g5 .g5-text p{max-width:500px;font-family:"NOW","Helvetica Neue",sans-serif;font-size:clamp(16px,1.4vw,20px);line-height:1.25}
+  .g5 .g5-text .cat{margin-top:24px;font-size:16px;line-height:20px}
   .g5-text{grid-column:3;grid-row:1;display:flex;flex-direction:column;justify-content:center}
   .crumbs{display:flex;gap:8px;font-size:12px;color:#333}.crumbs a{color:inherit;text-decoration:none}.crumbs span{color:#999}
   .g5-text h1{text-align:left;margin:14px 0 16px;font-size:clamp(36px,3.6vw,56px);line-height:1;text-transform:none}
@@ -161,7 +166,7 @@
 </header>
 
 <section class="g5">
-  <div class="g5-text"><nav class="crumbs"><a href="#">Úvod</a><span>·</span><a href="#">Produkty</a><span>·</span><a href="#">Sedací systémy</a></nav><h1>Aeronaute</h1><p>Modulární sedací systém Aeronaute zaujme kompaktním tvarem, který připomíná něco mezi vzducholodí a pohodlnou pohovkou. Kombinace dřevěných ploch a velkoryse čalouněných sedáků podtrhuje jeho útulný charakter. Promyšlený, jednoduchý a funkční design umožňuje snadné modulární rozšiřování, variabilní kombinování sedacích a odkládacích ploch a zároveň usnadňuje každodenní údržbu. Vybrané područky lze navíc doplnit o stolek, elektrické zásuvky a USB porty.</p><a class="cat" href="https://www.kovostal.cz/r/files/79531/ke-stazeni/katalog_kovostal_2024_02.pdf">↓ Katalog 2024/25</a></div>
+  <div class="g5-text"><h1>AERONAUTE</h1><p>Modulární sedací systém Aeronaute zaujme kompaktním tvarem, který připomíná něco mezi vzducholodí a pohodlnou pohovkou. Kombinace dřevěných ploch a velkoryse čalouněných sedáků podtrhuje jeho útulný charakter. Promyšlený, jednoduchý a funkční design umožňuje snadné modulární rozšiřování, variabilní kombinování sedacích a odkládacích ploch a zároveň usnadňuje každodenní údržbu. Vybrané područky lze navíc doplnit o stolek, elektrické zásuvky a USB porty.</p><a class="cat" href="https://www.kovostal.cz/r/files/79531/ke-stazeni/katalog_kovostal_2024_02.pdf">↓ Katalog 2024/25</a></div>
   <div class="g5-main"><img id="mainImg" src="https://www.kovostal.cz/r/104/169722/obsah/produkty/Aeronaute/DSCF3949.jpg" alt="Aeronaute – fotka 1"><button class="g5-hit l" aria-label="Předchozí"></button><button class="g5-hit r" aria-label="Další"></button></div>
   <div class="g5-strip"><div class="g5-thumbs" id="thumbs"><button class="th on" data-i="0" aria-label="Fotka 1"><img src="https://www.kovostal.cz/r/104/169722/obsah/produkty/Aeronaute/DSCF3949.jpg" alt=""></button><button class="th" data-i="1" aria-label="Fotka 2"><img src="https://www.kovostal.cz/r/104/169716/obsah/produkty/Aeronaute/DSCF3945.jpg" alt=""></button><button class="th" data-i="2" aria-label="Fotka 3"><img src="https://www.kovostal.cz/r/104/169718/obsah/produkty/Aeronaute/DSCF3946.jpg" alt=""></button><button class="th" data-i="3" aria-label="Fotka 4"><img src="https://www.kovostal.cz/r/104/169721/obsah/produkty/Aeronaute/DSCF3950.jpg" alt=""></button><button class="th" data-i="4" aria-label="Fotka 5"><img src="https://www.kovostal.cz/r/104/169717/obsah/produkty/Aeronaute/DSCF3943.jpg" alt=""></button><button class="th" data-i="5" aria-label="Fotka 6"><img src="https://www.kovostal.cz/r/104/169719/obsah/produkty/Aeronaute/DSCF3947.jpg" alt=""></button></div></div>
 </section>
