@@ -165,7 +165,7 @@
   /* Varianta 08 – „harmonika“: všech 6 fotek vedle sebe jako pruhy, aktivní se rozbalí na celou fotku 4:5.
      Nic není schované, nic se nescrolluje, vše na jedné obrazovce. */
   .ac{--pad:clamp(20px,3vw,58px);--gap:clamp(12px,1.6vw,24px);--h:calc(100svh - var(--header) - 2 * var(--gap));
-      display:grid;grid-template-columns:minmax(280px,520px) minmax(0,1fr);column-gap:clamp(32px,4vw,80px);
+      display:grid;grid-template-columns:minmax(280px,440px) minmax(0,1fr);column-gap:clamp(32px,4vw,80px);
       padding:var(--gap) var(--pad);max-width:1600px;margin:0 auto;height:calc(100svh - var(--header));min-height:560px;box-sizing:border-box}
   .ac-text{align-self:start}
   .ac-text h1{margin:0 0 18px;text-align:left;font-family:"DIN Pro","Helvetica Neue",sans-serif;font-weight:700;font-size:clamp(44px,4.7vw,68px);line-height:1.3;letter-spacing:-.01em;text-transform:uppercase}
@@ -173,8 +173,8 @@
   .ac-text .cat{display:inline-block;margin-top:24px;color:inherit;font-size:16px;text-underline-offset:3px}
   .ac-panels{display:flex;gap:8px;height:100%;min-width:0}
   .pn{all:unset;position:relative;flex:1 1 0;min-width:0;height:100%;border-radius:14px;overflow:hidden;cursor:pointer;
-      transition:flex-grow .6s cubic-bezier(.2,.7,.2,1)}
-  .pn.on{flex-grow:7;cursor:default}
+      transition:flex .6s cubic-bezier(.2,.7,.2,1)}
+  .pn.on{flex:0 0 min(calc(var(--h) * .8), calc(100% - 5 * 72px));cursor:default}
   .pn img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.15) brightness(.92);transition:filter .4s}
   .pn.on img,.pn:hover img{filter:none}
   .pn-n{position:absolute;left:12px;bottom:12px;font-size:13px;letter-spacing:.08em;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5);transition:opacity .3s}
